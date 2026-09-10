@@ -29,3 +29,12 @@ def update_quantity(name, new_quantity):
         print(name, "not found in inventory.")
 
 
+def remove_item(name):
+    # only remove if the item actually exists
+    if name in inventory:
+        del inventory[name]
+        print(name, "removed!")
+    else:
+        print(name, "not found in inventory.")
+
+
