@@ -38,3 +38,10 @@ def remove_item(name):
         print(name, "not found in inventory.")
 
 
+def search_item(name):
+    # only show details if the item actually exists
+    if name in inventory:
+        details = inventory[name]
+        print(name, "-> price: $" + str(details["price"]), ", qty:", details["quantity"])
+    else:
+        print(name, "not found in inventory.")
