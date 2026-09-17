@@ -45,3 +45,31 @@ def search_item(name):
         print(name, "-> price: $" + str(details["price"]), ", qty:", details["quantity"])
     else:
         print(name, "not found in inventory.")
+
+
+# menu loop
+while True:
+    print("\n1. Add  2. View  3. Update  4. Remove  5. Search  6. Exit")
+    choice = input("Choose: ")
+
+    if choice == "1":
+        name = input("Name: ")
+        price = float(input("Price: "))
+        qty = int(input("Quantity: "))
+        add_item(name, price, qty)
+    elif choice == "2":
+        view_inventory()
+    elif choice == "3":
+        name = input("Name: ")
+        qty = int(input("New quantity: "))
+        update_quantity(name, qty)
+    elif choice == "4":
+        name = input("Name: ")
+        remove_item(name)
+    elif choice == "5":
+        name = input("Name: ")
+        search_item(name)
+    elif choice == "6":
+        break
+    else:
+        print("Invalid choice.")
