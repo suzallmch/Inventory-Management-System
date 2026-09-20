@@ -47,9 +47,21 @@ def search_item(name):
         print(name, "not found in inventory.")
 
 
+def check_low_stock(threshold=10):
+    # loop through inventory and print items below the threshold
+    print(f"\n--- Low Stock Items (below {threshold}) ---")
+    found = False
+    for name, details in inventory.items():
+        if details["quantity"] < threshold:
+            print(name, "-> qty:", details["quantity"])
+            found = True
+    if not found:
+        print("No items are low on stock.")
+
+
 # menu loop
 while True:
-    print("\n1. Add  2. View  3. Update  4. Remove  5. Search  6. Exit")
+    print("\n1. Add  2. View  3. Update  4. Remove  5. Search  6. Low Stock  7. Exit")
     choice = input("Choose: ")
 
     if choice == "1":
@@ -70,6 +82,8 @@ while True:
         name = input("Name: ")
         search_item(name)
     elif choice == "6":
+        check_low_stock()
+    elif choice == "7":
         break
     else:
         print("Invalid choice.")
