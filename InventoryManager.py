@@ -59,6 +59,14 @@ def check_low_stock(threshold):
         print("No items are low on stock.")
 
 
+def total_inventory_value():
+    # sum up price * quantity for every item
+    total = 0
+    for name, details in inventory.items():
+        total += details["price"] * details["quantity"]
+    print(f"Total inventory value: ${total}")
+
+
 def sell_item(name, qty_sold):
     # only sell if the item exists
     if name not in inventory:
@@ -78,7 +86,7 @@ def sell_item(name, qty_sold):
 
 # menu loop
 while True:
-    print("\n1. Add  2. View  3. Update  4. Remove  5. Search  6. Low Stock  7. Sell  8. Exit")
+    print("\n1. Add  2. View  3. Update  4. Remove  5. Search  6. Low Stock  7. Sell  8. Total Value  9. Exit")
     choice = input("Choose: ")
 
     if choice == "1":
@@ -106,6 +114,8 @@ while True:
         qty = int(input("Quantity sold: "))
         sell_item(name, qty)
     elif choice == "8":
+        total_inventory_value()
+    elif choice == "9":
         break
     else:
         print("Invalid choice.")
